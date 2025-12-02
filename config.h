@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <X11/XF86keysym.h>
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 6;        /* gaps between windows */
@@ -48,7 +50,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -62,6 +64,29 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+
+static const char *mutevol[]  = { "/bin/sh", "-c", "/usr/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ~/Projects/src/scripts/statusbar.sh", NULL };
+static const char *downvol[]  = { "/bin/sh", "-c", "/usr/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && ~/Projects/src/scripts/statusbar.sh", NULL };
+static const char *upvol[]    = { "/bin/sh", "-c", "/usr/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && ~/Projects/src/scripts/statusbar.sh", NULL };
+
+static const char *mutemic[]  = { "/bin/sh", "-c", "/usr/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ~/Projects/src/scripts/statusbar.sh", NULL };
+
+static const char *downlum[]  = { "/bin/sh", "-c", "~/Projects/src/scripts/brightness.sh - && ~/Projects/src/scripts/statusbar.sh", NULL };
+static const char *uplum[]    = { "/bin/sh", "-c", "~/Projects/src/scripts/brightness.sh + && ~/Projects/src/scripts/statusbar.sh", NULL };
+
+static const char *status[]   = { "/bin/sh", "-c", "sleep 0.5 && ~/Projects/src/scripts/statusbar.sh && sleep 8 && ~/Projects/src/scripts/statusbar.sh", NULL };
+
+static const char *qalq[]     = { "/bin/sh", "-c", "~/Projects/src/scripts/calculator.sh", NULL };
+
+static const char *scrfull[]  = { "/bin/sh", "-c", "~/Projects/src/scripts/screenshot.sh full", NULL };
+static const char *scrsel[]   = { "/bin/sh", "-c", "~/Projects/src/scripts/screenshot.sh select", NULL };
+static const char *scrclip[]  = { "/bin/sh", "-c", "~/Projects/src/scripts/screenshot.sh clipboard", NULL };
+
+static const char *togaudio[] = { "/bin/sh", "-c", "mpc toggle && ~/Projects/src/scripts/statusbar.sh", NULL };
+static const char *stpaudio[] = { "/bin/sh", "-c", "mpc stop && ~/Projects/src/scripts/statusbar.sh", NULL };
+static const char *prvaudio[] = { "/bin/sh", "-c", "mpc prev && ~/Projects/src/scripts/statusbar.sh", NULL };
+static const char *nxtaudio[] = { "/bin/sh", "-c", "mpc next && ~/Projects/src/scripts/statusbar.sh", NULL };
+static const char *rndaudio[] = { "/bin/sh", "-c", "mpc random && ~/Projects/src/scripts/statusbar.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -98,6 +123,25 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ 0,                            XF86XK_AudioMute,         spawn,          {.v = mutevol } },
+	{ 0,                            XF86XK_AudioLowerVolume,  spawn,          {.v = downvol } },
+	{ 0,                            XF86XK_AudioRaiseVolume,  spawn,          {.v = upvol } },
+	{ 0,                            XF86XK_AudioMicMute,      spawn,          {.v = mutemic } },
+	{ 0,                            XF86XK_MonBrightnessDown, spawn,          {.v = downlum } },
+	{ 0,                            XF86XK_MonBrightnessUp,   spawn,          {.v = uplum } },
+	{ 0,                            XF86XK_RFKill,            spawn,          {.v = status } },
+	{ 0,                            XF86XK_Calculator,        spawn,          {.v = qalq } },
+	{ 0,                            XK_Print,                 spawn,          {.v = scrfull } },
+	{ ControlMask,                  XK_Print,                 spawn,          {.v = scrsel } },
+	{ Mod1Mask,                     XK_Print,                 spawn,          {.v = scrclip } },
+	{ MODKEY|ShiftMask,             XK_s,                     spawn,          {.v = scrfull } },
+	{ MODKEY|ShiftMask|ControlMask, XK_s,                     spawn,          {.v = scrsel } },
+	{ MODKEY|ShiftMask|Mod1Mask,    XK_s,                     spawn,          {.v = scrclip } },
+	{ 0,                            XF86XK_AudioPlay,         spawn,          {.v = togaudio } },
+	{ 0,                            XF86XK_AudioStop,         spawn,          {.v = stpaudio } },
+	{ 0,                            XF86XK_AudioPrev,         spawn,          {.v = prvaudio } },
+	{ 0,                            XF86XK_AudioNext,         spawn,          {.v = nxtaudio } },
+	{ ControlMask,                  XF86XK_AudioPlay,         spawn,          {.v = rndaudio } },
 };
 
 /* button definitions */
