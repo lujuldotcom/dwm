@@ -29,9 +29,17 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class         instance         title       tags mask     isfloating   monitor */
+	{ "st-256color", "zsh-fastfetch", NULL,       0,            1,           -1 },
+	{ "st-256color", "zsh-qalq",      NULL,       0,            1,           -1 },
+	{ "thunderbird", NULL,            NULL,       1 << 1,       0,           -1 },
+	{ "qBittorrent", NULL,            NULL,       1 << 2,       0,           -1 },
+	{ "FileZilla",   NULL,            NULL,       1 << 2,       0,           -1 },
+	{ "Gimp",        NULL,            NULL,       1 << 5,       0,           -1 },
+	{ "Inkscape",    NULL,            NULL,       1 << 5,       0,           -1 },
+	{ "ncmpcpp-7",   NULL,            NULL,       1 << 6,       0,           -1 },
+	{ "mpv",         "mpv-7",         NULL,       1 << 6,       0,           -1 },
+	{ "yt-7",        NULL,            NULL,       1 << 6,       0,           -1 },
 };
 
 /* layout(s) */
@@ -122,6 +130,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_underscore,                7)
 	TAGKEYS(                        XK_ccedilla,                  8)
 	{ MODKEY|ShiftMask,             XK_q,         quit,           {0} },
+	{ ControlMask|Mod1Mask,         XK_Tab,       view,           {0} },
 	/* modifier                     key                       function   argument */
 	{ 0,                            XF86XK_AudioMute,         spawn,     {.v = mutevol } },
 	{ 0,                            XF86XK_AudioLowerVolume,  spawn,     {.v = downvol } },
@@ -142,6 +151,9 @@ static const Key keys[] = {
 	{ 0,                            XF86XK_AudioPrev,         spawn,     {.v = prvaudio } },
 	{ 0,                            XF86XK_AudioNext,         spawn,     {.v = nxtaudio } },
 	{ ControlMask,                  XF86XK_AudioPlay,         spawn,     {.v = rndaudio } },
+	{ MODKEY,                       XK_a,                     spawn,     SHCMD("firefox") },
+	{ MODKEY,                       XK_z,                     spawn,     SHCMD("thunar") },
+	{ MODKEY,                       XK_e,                     spawn,     SHCMD("thunderbird") },
 };
 
 /* button definitions */
