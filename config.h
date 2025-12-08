@@ -32,7 +32,7 @@ static const Rule rules[] = {
 	/* class         instance         title       tags mask     isfloating   monitor */
 	{ "st-256color", "zsh-fastfetch", NULL,       0,            1,           -1 },
 	{ "st-256color", "zsh-qalq",      NULL,       0,            1,           -1 },
-	{ "thunderbird", NULL,            NULL,       1 << 1,       0,           -1 },
+	{ NULL,          "Mail",          NULL,       1 << 1,       0,           -1 },
 	{ "qBittorrent", NULL,            NULL,       1 << 2,       0,           -1 },
 	{ "FileZilla",   NULL,            NULL,       1 << 2,       0,           -1 },
 	{ "Gimp",        NULL,            NULL,       1 << 5,       0,           -1 },
