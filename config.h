@@ -72,28 +72,28 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
-static const char *mutevol[]  = { "/bin/sh", "-c", "/usr/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ~/Projects/src/scripts/statusbar.sh", NULL };
-static const char *downvol[]  = { "/bin/sh", "-c", "/usr/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && ~/Projects/src/scripts/statusbar.sh", NULL };
-static const char *upvol[]    = { "/bin/sh", "-c", "/usr/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && ~/Projects/src/scripts/statusbar.sh", NULL };
+static const char *mutevol[]  = { "/bin/sh", "-c", "/usr/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ~/Projects/src/dotfiles/scripts/statusbar.sh", NULL };
+static const char *downvol[]  = { "/bin/sh", "-c", "/usr/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && ~/Projects/src/dotfiles/scripts/statusbar.sh", NULL };
+static const char *upvol[]    = { "/bin/sh", "-c", "/usr/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && ~/Projects/src/dotfiles/scripts/statusbar.sh", NULL };
 
-static const char *mutemic[]  = { "/bin/sh", "-c", "/usr/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ~/Projects/src/scripts/statusbar.sh", NULL };
+static const char *mutemic[]  = { "/bin/sh", "-c", "/usr/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ~/Projects/src/dotfiles/scripts/statusbar.sh", NULL };
 
-static const char *downlum[]  = { "/bin/sh", "-c", "~/Projects/src/scripts/brightness.sh - && ~/Projects/src/scripts/statusbar.sh", NULL };
-static const char *uplum[]    = { "/bin/sh", "-c", "~/Projects/src/scripts/brightness.sh + && ~/Projects/src/scripts/statusbar.sh", NULL };
+static const char *downlum[]  = { "/bin/sh", "-c", "~/Projects/src/dotfiles/scripts/brightness.sh - && ~/Projects/src/dotfiles/scripts/statusbar.sh", NULL };
+static const char *uplum[]    = { "/bin/sh", "-c", "~/Projects/src/dotfiles/scripts/brightness.sh + && ~/Projects/src/dotfiles/scripts/statusbar.sh", NULL };
 
-static const char *status[]   = { "/bin/sh", "-c", "sleep 0.5 && ~/Projects/src/scripts/statusbar.sh && sleep 8 && ~/Projects/src/scripts/statusbar.sh", NULL };
+static const char *status[]   = { "/bin/sh", "-c", "sleep 0.5 && ~/Projects/src/dotfiles/scripts/statusbar.sh && sleep 8 && ~/Projects/src/dotfiles/scripts/statusbar.sh", NULL };
 
-static const char *qalq[]     = { "/bin/sh", "-c", "~/Projects/src/scripts/calculator.sh", NULL };
+static const char *qalq[]     = { "/bin/sh", "-c", "~/Projects/src/dotfiles/scripts/calculator.sh", NULL };
 
-static const char *scrfull[]  = { "/bin/sh", "-c", "~/Projects/src/scripts/screenshot.sh full", NULL };
-static const char *scrsel[]   = { "/bin/sh", "-c", "~/Projects/src/scripts/screenshot.sh select", NULL };
-static const char *scrclip[]  = { "/bin/sh", "-c", "~/Projects/src/scripts/screenshot.sh clipboard", NULL };
+static const char *scrfull[]  = { "/bin/sh", "-c", "~/Projects/src/dotfiles/scripts/screenshot.sh full", NULL };
+static const char *scrsel[]   = { "/bin/sh", "-c", "~/Projects/src/dotfiles/scripts/screenshot.sh select", NULL };
+static const char *scrclip[]  = { "/bin/sh", "-c", "~/Projects/src/dotfiles/scripts/screenshot.sh clipboard", NULL };
 
-static const char *togaudio[] = { "/bin/sh", "-c", "mpc toggle && ~/Projects/src/scripts/statusbar.sh", NULL };
-static const char *stpaudio[] = { "/bin/sh", "-c", "mpc stop && ~/Projects/src/scripts/statusbar.sh", NULL };
-static const char *prvaudio[] = { "/bin/sh", "-c", "mpc prev && ~/Projects/src/scripts/statusbar.sh", NULL };
-static const char *nxtaudio[] = { "/bin/sh", "-c", "mpc next && ~/Projects/src/scripts/statusbar.sh", NULL };
-static const char *rndaudio[] = { "/bin/sh", "-c", "mpc random && ~/Projects/src/scripts/statusbar.sh", NULL };
+static const char *togaudio[] = { "/bin/sh", "-c", "mpc toggle && ~/Projects/src/dotfiles/scripts/statusbar.sh", NULL };
+static const char *stpaudio[] = { "/bin/sh", "-c", "mpc stop && ~/Projects/src/dotfiles/scripts/statusbar.sh", NULL };
+static const char *prvaudio[] = { "/bin/sh", "-c", "mpc prev && ~/Projects/src/dotfiles/scripts/statusbar.sh", NULL };
+static const char *nxtaudio[] = { "/bin/sh", "-c", "mpc next && ~/Projects/src/dotfiles/scripts/statusbar.sh", NULL };
+static const char *rndaudio[] = { "/bin/sh", "-c", "mpc random && ~/Projects/src/dotfiles/scripts/statusbar.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key           function        argument */
